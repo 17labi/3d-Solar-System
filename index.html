@@ -40,9 +40,17 @@
   <div id="controls">
     <button id="changeCamera">Change Camera</button>
   </div>
-  <audio id="backgroundMusic" loop autoplay>
+  <audio id="backgroundMusic" loop autoplay muted>
   <source src="music1.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+  const music = document.getElementById("backgroundMusic");
+  window.addEventListener("click", () => {
+    music.muted = false;
+    music.play();
+  });
+</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
@@ -54,9 +62,7 @@
     document.body.appendChild(renderer.domElement);
 
     // Music
-    const music = document.getElementById("backgroundMusic");
-    music.play();
-
+    
     // Galaxy Background
     const starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
